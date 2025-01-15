@@ -1,6 +1,6 @@
 # RoBoost PLSR
 
-A novel **robust Partial Least Squares Regression (PLS)** method that handles outliers by leveraging weighted robust techniques. This implementation is inspired by research by [N. Ammari et al.](https://www.sciencedirect.com/science/article/pii/S0003267021006498?ref=pdf_download&fr=RR-2&rr=8ff6d688e858ea69) and, to the best of our knowledge, **has not been integrated into any major Python library.**
+A novel **Robust Partial Least Squares Regression (RoBoost PLSR)** method that handles outliers by leveraging weighted robust techniques. This implementation is inspired by research by [N. Ammari et al.](https://www.sciencedirect.com/science/article/pii/S0003267021006498?ref=pdf_download&fr=RR-2&rr=8ff6d688e858ea69) and, to the best of our knowledge, **has not been integrated into any major Python library.**
 
 ---
 
@@ -12,8 +12,7 @@ A novel **robust Partial Least Squares Regression (PLS)** method that handles ou
 5. [Examples](#examples)
 6. [Project Structure](#project-structure)
 7. [Contributing](#contributing)
-8. [License](#license)
-9. [References](#references)
+8. [References](#references)
 
 ---
 
@@ -58,3 +57,56 @@ model.fit(X_train, y_train)  # Single output variable only!
 y_pred = model.predict(X_test)
 ```
 Note: If you pass multiple output columns, an error will be raised. Make sure y_train is a single Series or single-column DataFrame.
+
+## Examples
+
+We provide a Jupyter notebook in examples/sugar_example.ipynb that shows how to:
+
+1. Load the DATASET.csv from examples/data/.
+2. Perform EDA (exploratory data analysis) and PCA.
+3. Compare PCR, classical PLSR, and RoBoost PLSR.
+4. Optimize hyperparameters (alpha, beta, gamma) for RoBoost PLSR.
+
+To run the notebook:
+
+1. Make sure you have Python 3, plus the required libraries (numpy, pandas, matplotlib, seaborn, scikit-learn, etc.).
+2. Navigate to the RoBoostPLSR/examples/ folder:
+cd RoBoostPLSR/examples
+3. Launch Jupyter:
+jupyter notebook
+4. Open sugar_example.ipynb and run all cells.
+
+## Project Structure
+
+```bash
+RoBoostPLSR/
+├── roboost_plsr/
+│   ├── __init__.py
+│   ├── roboost_plsr.py        # RoBoost PLSR class
+│   └── utils.py               # Helper functions (F_weight, pls_nipalsw, etc.)
+├── examples/
+│   ├── data/
+│   │   └── DATASET.csv        # Sugar content dataset
+│   └── sugar_example.ipynb    # Demonstration notebook
+├── README.md
+```
+
+- roboost_plsr/: Python package folder containing the robust PLSR logic.
+- examples/: Contains example notebooks or scripts, plus the dataset.
+- DATASET.csv: Example data for sugar content in grapes.
+- README.md: Project documentation.
+
+## Contributing
+Issues & Feedback: If you find bugs or have a feature request, please open an issue.
+Pull Requests: Contributions are welcome! Fork the repo, create a branch, and open a PR to main.
+
+## References
+Original Algorithm Inspiration
+[N. Ammari et al.](https://www.sciencedirect.com/science/article/pii/S0003267021006498?ref=pdf_download&fr=RR-2&rr=8ff6d688e858ea69)
+
+Grape Sugar Content Dataset
+[Dataset - sciencedirect.com](https://www.sciencedirect.com/science/article/pii/S2352340922010253)
+
+
+
+
